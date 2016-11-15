@@ -278,16 +278,22 @@ class DBHelper extends SQLiteOpenHelper {
     //TODO:  Use the Courses and Instructors methods above as a guide.
 
 
+    public void addCourse(int crn, int semesterCode, int courseId, int instructorId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(OFFERINGS_KEY_FIELD_ID, crn);
+        values.put(FIELD_SEMESTER_CODE, semesterCode);
+        values.put(FIELD_COURSE_ID, courseId);
+        values.put(FIELD_TITLE, instructorId);
+
+        db.insert(COURSES_TABLE, null, values);
+
+        // CLOSE THE DATABASE CONNECTION
+        db.close();
+    }
+
     
-
-
-
-
-
-
-
-
-
 
 
     //********** IMPORT FROM CSV OPERATIONS:  Courses, Instructors and Offerings
